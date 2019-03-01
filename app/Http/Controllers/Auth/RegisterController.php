@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /*
@@ -28,18 +28,14 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/vista1';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -71,4 +67,23 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    protected function registered(Request $request, $user)
+    {
+        //
+    }
+    public function register(Request $request){
+               
+        $this->validator($request->all())->validate();
+        $user = $this->create($request->all());
+        
+        //dd($user->all());
+        ///$this->guard()->login($user);
+        return redirect('vista1');
+        //return $this->registered($request, $user)
+          //              ?: redirect($this->redirectPath());
+    }
+    
+    
+
+   
 }
