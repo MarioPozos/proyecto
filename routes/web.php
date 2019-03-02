@@ -69,3 +69,7 @@ Route::get('vista3',function(){
 //Vista de ayuda 
 //Vista de registro de alumno
 Route::get('alumno', 'Auth\RegisterController@crear')->name('alumno');
+//vista para  la ayuda
+Route::get('ayuda',function(){
+    return view('ayuda');
+})->name('ayuda');
