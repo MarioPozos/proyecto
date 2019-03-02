@@ -15,12 +15,6 @@ Route::post('/', 'Auth\LoginController@login');
 /*Route::get('/', function () {
     return view('auth.login');
 });*/
-//Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register')->name('register');
-Route::get('registro',function(){
-    return view('auth.register');
-})->name('registro');
-//Route::post('registro','nuevoadmi@nuevo');
 
 //Auth::routes();
 //Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -28,11 +22,10 @@ Route::get('registro',function(){
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
-/*
-if (config('register'))
+/*if (config('register'))
 {
-    Route::get('/register', 'RegisterController@showRegistrationForm')->name('register');
-    Route::post('/register', 'RegisterController@register');
+    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'RegisterController@register');
 }*/
 // Password Reset Routes...
 
@@ -51,8 +44,6 @@ if (config('register'))
 
 //auth()->user()->tipo
 
-
-//Vistas de los tipos de administradores
 Route::get('vista1',function(){
     return view('admi.admi1');
 })->name('vista1');
@@ -62,4 +53,3 @@ Route::get('vista2',function(){
 Route::get('vista3',function(){
     return view('admi.admi3');
 })->name('vista3');
-//Vista de ayuda 

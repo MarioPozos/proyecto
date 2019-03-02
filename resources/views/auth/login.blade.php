@@ -8,15 +8,6 @@
                 <div class="card-header">{{ __('Inicio de sesión') }}</div>
 
                 <div class="card-body">
-                @if($errors->any())
-                 <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
-                        @endforeach
-                    </ul>
-                 </div>  
-                @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -25,12 +16,12 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-<!--
+
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif-->
+                                @endif
                             </div>
                         </div>
 
@@ -40,11 +31,11 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
-                                <!--@if ($errors->has('password'))
+                                @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif-->
+                                @endif
                             </div>
                         </div>
 
