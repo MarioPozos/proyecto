@@ -1,3 +1,4 @@
+@if(Auth::user()->id == 1) 
 @extends('layouts.app')
 
 @section('content')
@@ -91,3 +92,5 @@
     </div>
 </div>
 @endsection
+@endif
+{{ old('login') }}
