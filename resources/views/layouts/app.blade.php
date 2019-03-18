@@ -24,9 +24,15 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
+            @guest
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ 'Extensionismo'}}
                 </a>
+            @else
+                <a class="navbar-brand" href="{{ url('vista') }}">
+                    {{ 'Extensionismo'}}
+                </a>
+            @endguest
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -52,12 +58,42 @@
                                 </li>
                             @endif-->
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">{{ __('Ayudita') }}</a>
+                                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">{{ __('Ayuda') }}</a>
                             </li>
                         @else
                             @yield('nav')
+                            @switch(Auth::user()->tipo)
+                                @case(1)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('registro') }}">{{ __('Registrar') }}</a>
+                                </li>
+                                    @break
+                                @case(2)
+                                    <!--<li class="nav-item">
+                                    <a class="nav-link" href="{{ route('alumno.index') }}">{{ __('Registrar Alumno') }}</a>-->
+                                    <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Alumno
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('alumno.index') }}">{{ __('Lista de Alumnos') }}</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ route('alumno.create') }}">{{__('Registro de Alumnos')}}</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                    </li>
+                                    @break
+                                @case(3)
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('alumno.create') }}">{{ __('Registrar Alumno') }}</a>
+                                    </li>
+                                    @break
+                                @default
+                                    @break
+                            @endswitch
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">{{ __('Ayudita') }}</a>
+                                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">{{ __('Ayuda') }}</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

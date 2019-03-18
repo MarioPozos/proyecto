@@ -68,7 +68,10 @@ Route::get('vista3',function(){
 })->name('vista3');*/
 //Vista de ayuda 
 //Vista de registro de alumno
-Route::get('alumno', 'Auth\RegisterController@crear')->name('alumno');
+//Route::get('alumno', 'Auth\RegisterController@crear')->name('alumno');
+
+Route::resource('alumno','AlumnoController');
+Route::post('alumnoDatos','AlumnoController@temporal')->name('alumnoDatos');
 //vista para  la ayuda
 Route::get('ayuda',function(){
     return view('ayuda');
