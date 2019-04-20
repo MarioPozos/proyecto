@@ -25,15 +25,39 @@ class AlumnoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function auxiliar(Request $request)
+    {   
+        $datos=(object)array(
+            'univeridad'=>$request->universidad           
+            );
+    \Session::push('Escolares',$datos);
+    }
     public function temporal(Request $request)
     {   
         if(auth()->user()->tipo=='2'||auth()->user()->tipo=='3'){
             $datos=(object)array(
                                 'nombre'=>$request->nombre,
-                                'edad'=>$request->edad
+                                'app'=>$request->app,
+                                'apm'=>$request->apm,
+                                'tel'=>$request->tel,
+                                'correo'=>$request->correo,
+                                'curp'=>$request->curp,
+                                'inicio'=>$request->inicio,
+                                'termino'=>$request->termino,
+                                'codigo'=>$request->codigo,
+                                'uni'=>$request->uni,
+                                'facu'=>$request->facu,
+                                'carrera'=>$request->carrera,
+                                'matri'=>$request->matri,
+                                'periodo'=>$request->periodo,
+                                'genera'=>$request->genera,
+                                'folio'=>$request->folio,
+                                'documen'=>$request->documen,
+                                'activida'=>$request->activida,
+                                'comuni'=>$request->comuni
                                 );
             \Session::push('Registro',$datos);
-            return view('alumnos.registro');
+            return $this->create();
         }
         return redirect('vista');
     }
@@ -55,9 +79,20 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+        $lista= \Session::get('Registro');
+        foreach($lista as $listaSesion){
+            $datosAlumno=new Alumno;
+            $datosAlumno->nombre=$listaSesion->nombre;
+            $datosAlumno->edad=$listaSesion->edad;
+            $datosAlumno->save();
+        }
+        
+        return view('alumnos.index');
+        */
+        \Session::forget('Registro');
     }
-
+    
     /**
      * Display the specified resource.
      *

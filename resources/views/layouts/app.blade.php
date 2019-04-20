@@ -7,20 +7,26 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ 'Extensionismo' }}</title>
-
+    <title>{{ 'Extensionismo' }}</title>        
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
+    <!-- Scripts -->
+    <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
+    <link href="{{ asset('extras/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <!-- DataTables css  --> 
+    <link href="{{ asset('extras/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
 </head>
 <body>
 @extends('ayuda')
+@extends('alumnos.nuevaUniversidad')
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -58,7 +64,7 @@
                                 </li>
                             @endif-->
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">{{ __('Ayuda') }}</a>
+                                <a data-toggle="modal" data-target="#exampleModal">{{ __('Ayuda') }}</a>
                             </li>
                         @else
                             @yield('nav')
@@ -122,10 +128,17 @@
             @yield('content')
         </main>
     </div>
-    <script>
-    $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
-    </script>
+    <!-- Scripts Jquery-->
+    <script src="{{ asset('extras/jquery/jquery-3.3.1.min.js') }}"></script>
+    <!-- Scripts Datatables-->
+    <script src="{{ asset('extras/datatables/dataTables.js') }}"></script>
+    <script src="{{ asset('extras/datatables/DataTables-1.10.18/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('extras/datatables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('extras/jquery/mijs.js') }}"></script>
+    <!-- Scripts Bootstrap-->    
+    <script src="{{ asset('extras/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('extras/bootstrap/js/bootstrap.js') }}"></script>
+    @yield('scripts')
+    
 </body>
 </html>
