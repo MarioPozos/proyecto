@@ -73,27 +73,17 @@ Route::get('vista3',function(){
 Route::resource('alumno','AlumnoController');
 Route::post('alumnoDatos','AlumnoController@temporal')->name('alumnoDatos');
 //vista para la universidad
-Route::get('universidad','UniversidadController@index');
+Route::get('universidad','UniversidadController@index')->name('universidad');
 Route::post('nuevaUni','UniversidadController@store');
 Route::get('datosUni','UniversidadController@datosUni')->name('datosUni');
+Route::get('editarUni','UniversidadController@editarUni')->name('editarUni');
+Route::post('editar','UniversidadController@editar')->name('editar');
+Route::get('borrarUni','UniversidadController@borrar')->name('borrarUni');
 //vista para  la ayuda
 Route::get('ayuda',function(){
     return view('ayuda');
 })->name('ayuda');
 /*
-    public function datosUniversidad()
-    {
-        $uni=Universidad::all();
-        return Datatables::of($uni)
-        ->addColumn('acción',function($uni){
-            '< a onclick="showData('.$uni.id.')" class= "btn btn-sm btn-sucess>VER</a>'.' '.
-            '< a onclick="editForm('.$uni.id.')" class= "btn btn-sm btn-info>Editar</a>'.' '.
-            '< a onclick="deleteData('.$uni.id.')" class= "btn btn-sm btn-danger>Borrar</a>';
-
-
-         })->make(true);
-    }
-    *//*
     public function datosUniversidad()
     {
         $uni=Universidad::all();

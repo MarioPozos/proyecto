@@ -19,7 +19,9 @@
                 @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        <div class="d-flex justify-content-center mb-4">
+                        <img src="{{ asset('extras/img/escudo.png') }}"  alt="EscudoBUAP" class="rounded" width="150" height="150">   
+                        </div>
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo') }}</label>
 
